@@ -1,6 +1,5 @@
 <!DOCTYPEhtml>
   <html>
-
     <head>
       <title>Learn Spanish Verbs</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,6 @@
       <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-deep_purple.min.css">
       <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     </head>
-
     <body style="padding: 5%;">
       <div class="mdl-card mdl-shadow--2dp">
         <div class="mdl-card__title">
@@ -72,6 +70,7 @@
           </tr>
         </tbody>
       </table>
+      <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onclick="practice()">Practice</a>
       <script>
         var slide = 0;
         var slides = [
@@ -84,12 +83,12 @@
           ["Example", "The table below shows that the ending for regular ER verbs in the 'yo' form is 'o,' so if you replace the 'er' in correr with an 'o,' you'll get the conjugated form: 'yo corro.'"],
           ['Check in', "Study the table below and check off rows when you feel you understand them. When you feel comfortable with all of the conjugations, hit the 'practice' button at the bottom of the screen."]
         ];
-
+        
         function enable(btn) {
           btn.removeAttribute("disabled");
           componentHandler.upgradeElement(btn);
         }
-
+        
         function disable(btn) {
           btn.setAttribute("disabled", "");
           componentHandler.upgradeElement(btn);
@@ -113,15 +112,15 @@
           if (slide > 0) slide--;
           loadSlide();
         }
-        
-        var conjugations = [
-        	"ar": ["o", "as", "a", "a", "a", "amos", "amos", "aís", "aís", "an", "an", "an"],
-        	"er": ["o", "es", "e", "e", "e", "emos", "emos", "eís", "eís", "en", "en", "en"],
-          "ir": ["o", "es", "e", "e", "e", "imos", "imos", "ís", "ís", "en", "en", "en"],
-        ];
-        
+
+        var conjugations = {
+          "ar": ["o", "as", "a", "a", "a", "amos", "amos", "aís", "aís", "an", "an", "an"],
+          "er": ["o", "es", "e", "e", "e", "emos", "emos", "eís", "eís", "en", "en", "en"],
+          "ir": ["o", "es", "e", "e", "e", "imos", "imos", "ís", "ís", "en", "en", "en"]
+        };
+
         var pronouns = [
-        	"yo",
+          "yo",
           "tú",
           "él",
           "ella",
@@ -134,25 +133,23 @@
           "ellas",
           "ustedes"
         ];
-        
+
         var verbs = [
-        	["corr", "er"],
+          ["corr", "er"],
           ["com", "er"],
           ["habl", "ar"],
           ["cocin", "ar"],
           ["sub", "ir"],
-          ["escrrib", "ir"],
+          ["escrib", "ir"]
         ];
-        
+
         function practice() {
-        	var p = Math.random(0, 11);
-          var v = Math.random(0, verbs.length - 1);
-          alert(prompt(pronouns[p] + " " + verbs[v][0] + verbs[v][1]) == verbs[v][0] + conjugations[verbs[v][1]][p] ? "Good Job!" : "The aorrect answer was " + verbs[v][0] + conjugations[verbs[v][1]][p] + ". Keep practicing!") 
+          var p = Math.floor(Math.random() * pronouns.length);
+          var v = Math.floor(Math.random() * verbs.length);
+          alert(prompt(pronouns[p] + " " + verbs[v][0] + verbs[v][1]) == verbs[v][0] + conjugations[verbs[v][1]][p] ? "Good Job!" : "The correct answer was actually \"" + verbs[v][0] + conjugations[verbs[v][1]][p] + ".\" Keep practicing!")
         }
-        
+
         loadSlide();
       </script>
     </body>
-
   </html>
-
