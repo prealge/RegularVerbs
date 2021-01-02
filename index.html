@@ -1,0 +1,158 @@
+<!DOCTYPEhtml>
+  <html>
+
+    <head>
+      <title>Learn Spanish Verbs</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-deep_purple.min.css">
+      <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    </head>
+
+    <body style="padding: 5%;">
+      <div class="mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text" id="title"></h2>
+        </div>
+        <div class="mdl-card__supporting-text" id="body"></div>
+        <div class="mdl-card__actions mdl-card--border">
+          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="back()" id="back">
+            Back
+          </a>
+          <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" style="float:right" onclick="next()" id="next">
+            Next
+          </a>
+        </div>
+      </div>
+      <table class="mdl-data-table--selectable mdl-js-data-table mdl-data-table mdl-shadow--2dp" style="margin: 5% 0">
+        <thead>
+          <tr>
+            <th></th>
+            <th>AR</th>
+            <th>ER</th>
+            <th>IR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>yo</td>
+            <td>o</td>
+            <td>o</td>
+            <td>o</td>
+          </tr>
+          <tr>
+            <td>tú</td>
+            <td>as</td>
+            <td>es</td>
+            <td>es</td>
+          </tr>
+          <tr>
+            <td>él/ella/ustd</td>
+            <td>a</td>
+            <td>e</td>
+            <td>e</td>
+          </tr>
+          <tr>
+            <td>nosotros/as</td>
+            <td>amos</td>
+            <td>emos</td>
+            <td>imos</td>
+          </tr>
+          <tr>
+            <td>vosotros/as</td>
+            <td>aís</td>
+            <td>eís</td>
+            <td>ís</td>
+          </tr>
+          <tr>
+            <td>ellos/ellas/ustds</td>
+            <td>an</td>
+            <td>en</td>
+            <td>en</td>
+          </tr>
+        </tbody>
+      </table>
+      <script>
+        var slide = 0;
+        var slides = [
+          ["Welcome!", "Today we are going to learn about present tense ER, AR, and IR verbs in spanish."],
+          ["Conjugations", "Verbs in spanish have different forms based on who or what they are describing."],
+          ["Verb Forms", "Different verb forms include the infinitive form as well as the the yo, tú, él/ella/ustd, nosotros/as, vosotros/as, and ellos/ellas/ustds forms."],
+          ["Verb endings", "Regular verbs have different endings for different verb forms depending on whether the verb is an ER, an AR, or an IR verb."],
+          ["Identifying AR, ER, and IR Verbs", "You can tell whether a regular verb is an AR, ER, or IR verb based on the ending of the infinitive form. For example, 'correr' is an ER verb becsause the infinitive ends in 'ER'."],
+          ["Example", "If you want to say 'I run,' you need to find the correct conjugation for 'correr,' an ER verb. In this case, that would be the 'yo' form."],
+          ["Example", "The table below shows that the ending for regular ER verbs in the 'yo' form is 'o,' so if you replace the 'er' in correr with an 'o,' you'll get the conjugated form: 'yo corro.'"],
+          ['Check in', "Study the table below and check off rows when you feel you understand them. When you feel comfortable with all of the conjugations, hit the 'practice' button at the bottom of the screen."]
+        ];
+
+        function enable(btn) {
+          btn.removeAttribute("disabled");
+          componentHandler.upgradeElement(btn);
+        }
+
+        function disable(btn) {
+          btn.setAttribute("disabled", "");
+          componentHandler.upgradeElement(btn);
+        }
+
+        function loadSlide() {
+          document.getElementById("title").innerHTML = slides[slide][0];
+          document.getElementById("body").innerHTML = slides[slide][1];
+          if (slide == 0) disable(document.getElementById("back"));
+          else enable(document.getElementById("back"));
+          if (slide == 7) disable(document.getElementById("next"));
+          else enable(document.getElementById("next"));
+        };
+
+        function next() {
+          if (slide < 7) slide++;
+          loadSlide();
+        }
+
+        function back() {
+          if (slide > 0) slide--;
+          loadSlide();
+        }
+        
+        var conjugations = [
+        	"ar": ["o", "as", "a", "a", "a", "amos", "amos", "aís", "aís", "an", "an", "an"],
+        	"er": ["o", "es", "e", "e", "e", "emos", "emos", "eís", "eís", "en", "en", "en"],
+          "ir": ["o", "es", "e", "e", "e", "imos", "imos", "ís", "ís", "en", "en", "en"],
+        ];
+        
+        var pronouns = [
+        	"yo",
+          "tú",
+          "él",
+          "ella",
+          "usted",
+          "nosotros",
+          "nosotras",
+          "vosotros",
+          "vosotras",
+          "ellos",
+          "ellas",
+          "ustedes"
+        ];
+        
+        var verbs = [
+        	["corr", "er"],
+          ["com", "er"],
+          ["habl", "ar"],
+          ["cocin", "ar"],
+          ["sub", "ir"],
+          ["escrrib", "ir"],
+        ];
+        
+        function practice() {
+        	var p = Math.random(0, 11);
+          var v = Math.random(0, verbs.length - 1);
+          alert(prompt(pronouns[p] + " " + verbs[v][0] + verbs[v][1]) == verbs[v][0] + conjugations[verbs[v][1]][p] ? "Good Job!" : "The aorrect answer was " + verbs[v][0] + conjugations[verbs[v][1]][p] + ". Keep practicing!") 
+        }
+        
+        loadSlide();
+      </script>
+    </body>
+
+  </html>
+
