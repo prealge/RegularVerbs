@@ -72,7 +72,7 @@
         var slides = [
           ["Welcome!", "Today we are going to learn about present tense ER, AR, and IR verbs in spanish."],
           ["Conjugations", "Verbs in spanish have different forms based on who or what they are describing."],
-          ["Verb Forms", "Different verb forms include the infinitive form as well as the the yo, tú, él/ella/ustd, nosotros/as, vosotros/as, and ellos/ellas/ustds forms."],
+          ["Verb Forms", "Different verb forms include the infinitive form as well as the yo, tú, él/ella/ustd, nosotros/as, vosotros/as, and ellos/ellas/ustds forms."],
           ["Verb endings", "Regular verbs have different endings for different verb forms depending on whether the verb is an ER, an AR, or an IR verb."],
           ["Identifying AR, ER, and IR Verbs", "You can tell whether a regular verb is an AR, ER, or IR verb based on the ending of the infinitive form. For example, 'correr' is an ER verb becsause the infinitive ends in 'ER'."],
           ["Example", "If you want to say 'I run,' you need to find the correct conjugation for 'correr,' an ER verb. In this case, that would be the 'yo' form."],
@@ -95,12 +95,12 @@
           document.getElementById("body").innerHTML = slides[slide][1];
           if (slide == 0) disable(document.getElementById("back"));
           else enable(document.getElementById("back"));
-          if (slide == 7) disable(document.getElementById("next"));
+          if (slide == slides.length - 1) disable(document.getElementById("next"));
           else enable(document.getElementById("next"));
         };
 
         function next() {
-          if (slide < 7) slide++;
+          if (slide < slides.length - 1) slide++;
           loadSlide();
         }
 
@@ -133,10 +133,19 @@
         var verbs = [
           ["corr", "er"],
           ["com", "er"],
+          ["beb", "er"],
+          ["aprend", "er"],
+          ["le", "er"],
           ["habl", "ar"],
           ["cocin", "ar"],
+          ["salt", "ar"],
+          ["cant", "ar"],
+          ["bail", "ar"],
           ["sub", "ir"],
-          ["escrib", "ir"]
+          ["escrib", "ir"],
+          ["abr", "ir"],
+          ["viv", "ir"],
+          ["descubr", "ir"]
         ];
 
         function practice() {
