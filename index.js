@@ -7,7 +7,7 @@ var slides = [
     ["Identifying Verb Types", "You can tell whether a regular verb is an AR, ER, or IR verb based on the ending of the infinitive form. For example, 'correr' is an ER verb becsause the infinitive ends in 'ER'."],
     ["Example", "If you want to say 'I run,' you need to find the correct conjugation for 'correr,' an ER verb. In this case, that would be the 'yo' form."],
     ["Example", "The table below shows that the ending for regular ER verbs in the 'yo' form is 'o,' so if you replace the 'er' in correr with an 'o,' you'll get the conjugated form: 'yo corro.'"],
-    ['Check in', "Study the table below. When you feel comfortable with all of the conjugations, hit the 'practice' button at the bottom of the screen."]
+    ['Check in', "Study the table below. You can practice conjugations with the button at the bottom of the screen."]
 ];
 
 function enable(btn) {
