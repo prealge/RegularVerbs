@@ -79,6 +79,9 @@ var verbs = [
 ];
 
 async function practice() {
+    document.querySelector("#verb-table").style.display = "none";
+    document.querySelector("#practice-button").style.display = "none";
+
     let p = Math.floor(Math.random() * pronouns.length);
     let v = Math.floor(Math.random() * verbs.length);
     Swal.fire({
@@ -94,33 +97,40 @@ async function practice() {
             return { conjugation }
         }
     }).then((confirmedConjugation) => {
-        let correctConjugation = verbs[v][0] + conjugations[verbs[v][1]][p]
-        let icon;
-        if (confirmedConjugation.value.conjugation == correctConjugation) {
-            icon = "success"
-        } else {
-            icon = "error"
-        }
-        Swal.fire({
-            title: verbs[v][0] + conjugations[verbs[v][1]][p],
-            text: confirmedConjugation.value.conjugation == correctConjugation ? "Good Job!" : "The correct answer was actually \"" + verbs[v][0] + conjugations[verbs[v][1]][p] + ".\" Keep practicing!",
-            icon: icon,
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Continue'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                practice()
+        if (confirmedConjugation.isConfirmed) {
+            let correctConjugation = verbs[v][0] + conjugations[verbs[v][1]][p]
+            let icon;
+            if (confirmedConjugation.value.conjugation == correctConjugation) {
+                icon = "success"
             } else {
-                Swal.fire(
-                    'Canceled',
-                    'Practice session has been ended',
-                    'error'
-                )
-                return 0;
+                icon = "error"
             }
-        })
+            Swal.fire({
+                title: verbs[v][0] + conjugations[verbs[v][1]][p],
+                text: confirmedConjugation.value.conjugation == correctConjugation ? "Good Job!" : "The correct answer was actually \"" + verbs[v][0] + conjugations[verbs[v][1]][p] + ".\" Keep practicing!",
+                icon: icon,
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Continue'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    practice()
+                } else {
+                    Swal.fire(
+                        'Canceled',
+                        'Practice session has been ended',
+                        'error'
+                    )
+                    document.querySelector("#verb-table").style.display = "block";
+                    document.querySelector("#practice-button").style.display = "block";
+                    return 0;
+                }
+            })
+        } else {
+            document.querySelector("#verb-table").style.display = "block";
+            document.querySelector("#practice-button").style.display = "block";
+        }
     })
 }
 
