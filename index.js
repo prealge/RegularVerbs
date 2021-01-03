@@ -92,7 +92,7 @@ async function practice() {
         preConfirm: () => {
             const conjugation = Swal.getPopup().querySelector('#conjugation').value
             if (!conjugation) {
-                Swal.showValidationMessage(`Please enter login and password`)
+                Swal.showValidationMessage(`Please enter your best guess for the conjugated word`)
             }
             return { conjugation }
         }
